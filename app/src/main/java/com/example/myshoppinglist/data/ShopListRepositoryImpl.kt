@@ -1,5 +1,6 @@
 package com.example.myshoppinglist.data
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.myshoppinglist.domain.ShopItem
@@ -29,14 +30,20 @@ object ShopListRepositoryImpl  : ShopListRepository {
     }
 
     override fun deleteShopItem(shopItem: ShopItem) {
+//        Log.d("ShopListRepositoryImpl", "deleteShopItem-1")
         shopList.remove(shopItem)
+//        Log.d("ShopListRepositoryImpl", "deleteShopItem-2")
         updateList()
+//        Log.d("ShopListRepositoryImpl", "deleteShopItem-3")
     }
 
     override fun editShopItem(shopItem: ShopItem) {
         val oldElement = getShopItem(shopItem.id)
+//        Log.d("ShopListRepositoryImpl", "editShopItem-1")
         shopList.remove(oldElement)
+//        Log.d("ShopListRepositoryImpl", "editShopItem-2")
         addShopItem(shopItem)
+//        Log.d("ShopListRepositoryImpl", "editShopItem-3")
     }
 
     override fun getShopItem(shopItemId: Int): ShopItem {

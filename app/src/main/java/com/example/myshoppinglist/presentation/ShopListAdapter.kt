@@ -18,17 +18,21 @@ class ShopListAdapter : ListAdapter<ShopItem, ShopItemViewHolder>(ShopItemDiffCa
     var onShopItemClickListener: ((ShopItem) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopItemViewHolder {
+//        Log.d("ShopListAdapter", "onCreateViewHolder-1")
         val layout = when (viewType) {
             VIEW_TYPE_DISABLED -> R.layout.item_shop_disabled
             VIEW_TYPE_ENABLED -> R.layout.item_shop_enabled
             else -> throw RuntimeException("Unknown view type: $viewType")
         }
+//        Log.d("ShopListAdapter", "onCreateViewHolder-2")
         val view = LayoutInflater.from(parent.context).inflate(layout, parent, false)
+//        Log.d("ShopListAdapter", "onCreateViewHolder-3")
         return ShopItemViewHolder(view)
     }
 
     override fun onBindViewHolder(viewHolder: ShopItemViewHolder, position: Int) {
         val shopItem = getItem(position)
+//        Log.d("ShopListAdapter", "onBindViewHolder-1")
         viewHolder.view.setOnLongClickListener {
             onShopItemLongClickListener?.invoke(shopItem)
             true
@@ -38,6 +42,7 @@ class ShopListAdapter : ListAdapter<ShopItem, ShopItemViewHolder>(ShopItemDiffCa
         }
         viewHolder.tvName.text = shopItem.name
         viewHolder.tvCount.text = shopItem.count.toString()
+//        Log.d("ShopListAdapter", "onBindViewHolder-2")
     }
 
     override fun getItemViewType(position: Int): Int {

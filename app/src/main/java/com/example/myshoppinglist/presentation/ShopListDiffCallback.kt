@@ -1,5 +1,6 @@
 package com.example.myshoppinglist.presentation
 
+import android.util.Log
 import androidx.recyclerview.widget.DiffUtil
 import com.example.myshoppinglist.domain.ShopItem
 
@@ -17,12 +18,14 @@ class ShopListDiffCallback(
     }
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+//        Log.d("ShopListDiffCallback", "areItemsTheSame")
         val oldItem = oldList[oldItemPosition]
         val newItem = newList[newItemPosition]
         return oldItem.id == newItem.id
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+//        Log.d("ShopListDiffCallback", "areContentsTheSame")
         val oldItem = oldList[oldItemPosition]
         val newItem = newList[newItemPosition]
         return oldItem == newItem

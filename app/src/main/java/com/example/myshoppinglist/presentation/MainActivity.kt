@@ -61,12 +61,17 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+//                Log.d("MainActivity", "setupSwipeListener.onSwiped-1")
                 val item = shopListAdapter.currentList[viewHolder.adapterPosition]
+//                Log.d("MainActivity", "setupSwipeListener.onSwiped-2")
                 viewModel.deleteShopItem(item)
+//                Log.d("MainActivity", "setupSwipeListener.onSwiped-3")
             }
         }
         val itemTouchHelper = ItemTouchHelper(callback)
+//        Log.d("MainActivity", "setupSwipeListener-4")
         itemTouchHelper.attachToRecyclerView(rvShopList)
+//        Log.d("MainActivity", "setupSwipeListener-5")
     }
 
     private fun setupClickListener() {
